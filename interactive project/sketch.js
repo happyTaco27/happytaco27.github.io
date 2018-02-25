@@ -5,7 +5,7 @@ let square;
 let triangle;
 let circle;
 aNumber = 0;
-square = rect(mouseX, mouseY, sizeOfShape, sizeOfShape);
+square = rect(mouseX/2, mouseY/2, sizeOfShape, sizeOfShape);
 circle = ellipse(mouseX / 2, mouseY / 2, sizeOfShape, sizeOfShape)
 
 function setup() {
@@ -13,15 +13,25 @@ function setup() {
 }
 
 function theShape() {
-  if (aNumber === 3) {
-    aNumber - 3
+  if (aNumber === 1) {
+    aNumber - 2
   } else if (aNumber === -1) {
-    aNumber + 3
+    aNumber + 2
   }
 }
-
+function changeShape()  {
+  if keyPressed(){
+    if (keyCode === "UP_ARROW") {
+      aNumber + 1;
+    }
+    else if (keyCode === "DOWN_ARROW")  {
+      aNumber - 1
+    }
+  }
+  print(aNumber);
+}
 function shapes() {
   if (aNumber === 0) {
-
+      square
   }
 }
