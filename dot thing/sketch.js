@@ -1,15 +1,27 @@
 
-
 function setup(){
   createCanvas(windowWidth,windowHeight);
+  let a,b,c;
 }
 
 function draw(){
   dots();
+  linesConnectingTheDots();
 }
 function dots(){
-  for(let a =20;a<400;a+=20);
-    for(let b=20;ab<800;b+=20);
-    point(a,b)
+  let c=50;
+  for(let a=c;a<800;a+=c){
+    for(let b=c;b<400;b+=c){
+      point(a,b);
+    }
+  }
+}
+function linesConnectingTheDots() {
+  let c=50;
+  for(let a=c;a<800;a+=c){
+    for(let b=c;b<400;b+=c){
+      line(a,b,800-a,400-b);
+      fill(255,0,0,150);
+    }
   }
 }
