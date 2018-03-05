@@ -28,7 +28,7 @@ function draw(){
   // ellipse
   ellipse(buttonWidth/2+240,buttonHeight/2+10,20,20);
   // triangle
-  triangle(buttonWidth/2+430,buttonHeight/2-10,buttonWidth/2+440,buttonHeight+10,buttonWidth/2+450,buttonHeight/2-10);
+  triangle(buttonWidth/2+430,buttonHeight/2+5,buttonWidth/2+440,buttonHeight-10,buttonWidth/2+450,buttonHeight/2+5);
   pop();
   // Red
   push();
