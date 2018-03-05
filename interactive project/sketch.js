@@ -49,7 +49,7 @@ function draw(){
   Button1();
   Button2();
   Button3();
-  Button4();
+  //Button4();
   refreshButton();
   theShape();
   changeColor1();
@@ -149,23 +149,23 @@ function Button3() {
     print(state);
   }
 }
-function Button4(){
-  if( mouseIsPressed &&
-      mouseX >=width-150 &&
-      mouseX <=width-100 &&
-      mouseY >=20 &&
-      mouseY <=70 )  {
+//function Button4(){
+//  if( mouseIsPressed &&
+//      mouseX >=width-150 &&
+//      mouseX <=width-100 &&
+//      mouseY >=20 &&
+//      mouseY <=70 )  {
     // push();
-    a=random(255);
-    b=random(255);
-    c=random(255);
-    fill(a,b,c);
-    rect(width-150,20,50,50);
-    return a,b,c;
-    // pop();
-  }
+//    a=random(255);
+//    b=random(255);
+//    c=random(255);
+//    fill(a,b,c);
+ //   rect(width-150,20,50,50);
+//    return a,b,c;
+//    // pop();
+//  }
 
-}
+//}
 
 function changeColor1(){
   if( mouseIsPressed &&
