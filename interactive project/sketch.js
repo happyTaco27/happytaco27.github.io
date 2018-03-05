@@ -2,6 +2,7 @@ let state,buttonWidth,buttonHeight,changeSize,a,b,c;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(255);
+  document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
   state=0;
   changeSize=10;
   a=0;
