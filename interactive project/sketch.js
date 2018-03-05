@@ -1,10 +1,9 @@
-let state,buttonWidth,buttonHeight,changeSize,a,b,c,colorState;
+let state,buttonWidth,buttonHeight,changeSize,a,b,c;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(255);
   state=0;
   changeSize=10;
-  colorState=1;
   a=0;
   b=0;
   c=0;
@@ -49,25 +48,16 @@ function draw(){
   Button1();
   Button2();
   Button3();
-  //Button4();
   refreshButton();
   theShape();
   changeColor1();
   changeColor2();
   changeColor3();
   cheedo();
-  hekOff();
 }
 function cheedo(){
   if(key==="t"){
     changeSize=10;
-  }
-}
-function hekOff(){
-  if(!colorState){
-    a=0;
-    b=0;
-    c=0;
   }
 }
 function mouseWheel(event){
@@ -149,24 +139,6 @@ function Button3() {
     print(state);
   }
 }
-//function Button4(){
-//  if( mouseIsPressed &&
-//      mouseX >=width-150 &&
-//      mouseX <=width-100 &&
-//      mouseY >=20 &&
-//      mouseY <=70 )  {
-    // push();
-//    a=random(255);
-//    b=random(255);
-//    c=random(255);
-//    fill(a,b,c);
- //   rect(width-150,20,50,50);
-//    return a,b,c;
-//    // pop();
-//  }
-
-//}
-
 function changeColor1(){
   if( mouseIsPressed &&
       mouseX >=680 &&
@@ -176,7 +148,6 @@ function changeColor1(){
     a=255;
     b=0;
     c=0;
-    colorState=!colorState;
   }
 }
 function changeColor2(){
@@ -188,7 +159,6 @@ function changeColor2(){
     a=0;
     b=255;
     c=0;
-    colorState=!colorState;
   }
 }
 function changeColor3(){
@@ -200,6 +170,5 @@ function changeColor3(){
     a=0;
     b=0;
     c=255;
-    colorState=!colorState;
   }
 }
