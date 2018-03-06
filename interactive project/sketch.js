@@ -1,4 +1,4 @@
-let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3;
+let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3,refresh;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(255);
@@ -16,6 +16,7 @@ function setup(){
   slider3=createSlider(0,255,0,1);
   slider3.position(678, 67);
   slider3.style(10, 100);
+
 }
 function draw(){
   let buttonWidth=200;
@@ -30,6 +31,8 @@ function draw(){
   rect(240,20,buttonWidth,buttonHeight);
   // button 3
   rect(460,20,buttonWidth,buttonHeight);
+  //Pen Tool
+  rect(1200,20,buttonWidth,buttonHeight);
   // Square
   push();
   fill(255);
@@ -55,13 +58,10 @@ function draw(){
   rect(680,70,140,20);
   //functions
   pop();
-  Button1();
-  Button2();
-  Button3();
+  ButtonIsPressed();
   refreshButton();
   theShape();
   resetSize();
-
 }
 function resetSize(){
   if(key==="t"){
@@ -110,43 +110,57 @@ function theShape(){
       }
     }
   }
+  if(state===4){
+    if(mouseY>120){
+      if(mouseIsPressed){
+        push();
+        stroke(a,b,c);
+        line(mouseX,mouseY,pmouseX,pmouseY);
+        pop();
+      }
+    }
+  }
 }
 function refreshButton(){
-  rect(width-70,20,50,50);
   if(key==="r"){
     window.location.reload();
   }
 }
-function Button1() {
+function ButtonIsPressed() {
+  //button 1
   if( mouseIsPressed &&
       mouseX >=20 &&
       mouseX <=220 &&
       mouseY >=20 &&
       mouseY <=100 )  {
-    fill(120);
     state=1;
     print(state);
   }
-}
-function Button2() {
+  //button 2
   if( mouseIsPressed &&
       mouseX >=240 &&
       mouseX <=440 &&
       mouseY >=20 &&
       mouseY <=100 )  {
-    fill(120);
     state=2;
     print(state);
   }
-}
-function Button3() {
+  //button 3
   if( mouseIsPressed &&
       mouseX >=460 &&
       mouseX <=660 &&
       mouseY >=20 &&
       mouseY <=100 )  {
-    fill(120);
     state=3;
+    print(state);
+  }
+  //Pen tool
+  if( mouseIsPressed &&
+      mouseX >=1200 &&
+      mouseX <=1400 &&
+      mouseY >=20 &&
+      mouseY <=100 )  {
+    state=4;
     print(state);
   }
 }
