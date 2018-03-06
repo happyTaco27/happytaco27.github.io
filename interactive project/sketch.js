@@ -1,12 +1,21 @@
-let state,buttonWidth,buttonHeight,changeSize,a,b,c;
+let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(255);
   state=0;
   changeSize=10;
-  a=0;
-  b=0;
-  c=0;
+  //red
+  slider1=createSlider(0,255,0,1);
+  slider1.position(678, 17);
+  slider1.style(10, 100);
+  //green
+  slider2=createSlider(0,255,0,1);
+  slider2.position(678, 43);
+  slider2.style(10, 100);
+  //blue
+  slider3=createSlider(0,255,0,1);
+  slider3.position(678, 67);
+  slider3.style(10, 100);
 }
 function draw(){
   let buttonWidth=200;
@@ -33,39 +42,41 @@ function draw(){
   // Red
   push();
   fill(255,0,0);
-  rect(680,20,50,20);
+  rect(680,20,140,20);
   pop();
   // Green
   push();
   fill(0,255,0);
-  rect(680,45,50,20);
+  rect(680,45,140,20);
   pop();
   // Blue
   push();
   fill(0,0,255);
-  rect(680,70,50,20);
+  rect(680,70,140,20);
+  //functions
   pop();
   Button1();
   Button2();
   Button3();
   refreshButton();
   theShape();
-  changeColor1();
-  changeColor2();
-  changeColor3();
-  cheedo();
+  resetSize();
+
 }
-function cheedo(){
+function resetSize(){
   if(key==="t"){
     changeSize=10;
   }
 }
 function mouseWheel(event){
-  changeSize += event.delta/4;
+  changeSize += event.delta/5;
   print(event.delta);
   return false;
 }
 function theShape(){
+  let a=slider1.value();
+  let b=slider2.value();
+  let c=slider3.value();
   if(state===1){
     if(mouseY>120){
       if(mouseIsPressed){
@@ -137,38 +148,5 @@ function Button3() {
     fill(120);
     state=3;
     print(state);
-  }
-}
-function changeColor1(){
-  if( mouseIsPressed &&
-      mouseX >=680 &&
-      mouseX <=730 &&
-      mouseY >=20 &&
-      mouseY <=40 )  {
-    a=255;
-    b=0;
-    c=0;
-  }
-}
-function changeColor2(){
-  if( mouseIsPressed &&
-      mouseX >=680 &&
-      mouseX <=730 &&
-      mouseY >=45 &&
-      mouseY <=65 )  {
-    a=0;
-    b=255;
-    c=0;
-  }
-}
-function changeColor3(){
-  if( mouseIsPressed &&
-      mouseX >=680 &&
-      mouseX <=730 &&
-      mouseY >=70 &&
-      mouseY <=90 )  {
-    a=0;
-    b=0;
-    c=255;
   }
 }
