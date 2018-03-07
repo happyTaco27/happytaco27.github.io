@@ -32,7 +32,11 @@ function draw(){
   // button 3
   rect(460,20,buttonWidth,buttonHeight);
   //Pen Tool
-  rect(1200,20,buttonWidth,buttonHeight);
+  rect(1070,20,buttonWidth,buttonHeight);
+  //refreshButton
+  rect(1020,20,40,40);
+  //resetSize
+  rect(1020,70,40,40);
   // Square
   push();
   fill(255);
@@ -58,22 +62,18 @@ function draw(){
   rect(680,70,140,20);
   //functions
   pop();
-  ButtonIsPressed();
-  refreshButton();
-  theShape();
+  Buttons();
+  Tools();
   resetSize();
 }
 function resetSize(){
-  if(key==="t"){
-    changeSize=10;
-  }
 }
 function mouseWheel(event){
-  changeSize += event.delta/5;
+  changeSize -= event.delta/3;
   print(event.delta);
   return false;
 }
-function theShape(){
+function Tools(){
   let a=slider1.value();
   let b=slider2.value();
   let c=slider3.value();
@@ -121,12 +121,7 @@ function theShape(){
     }
   }
 }
-function refreshButton(){
-  if(key==="r"){
-    window.location.reload();
-  }
-}
-function ButtonIsPressed() {
+function Buttons() {
   //button 1
   if( mouseIsPressed &&
       mouseX >=20 &&
@@ -156,11 +151,29 @@ function ButtonIsPressed() {
   }
   //Pen tool
   if( mouseIsPressed &&
-      mouseX >=1200 &&
-      mouseX <=1400 &&
+      mouseX >=1070 &&
+      mouseX <=1270 &&
       mouseY >=20 &&
       mouseY <=100 )  {
     state=4;
     print(state);
+  }
+  //refreshButton
+  if( mouseIsPressed &&
+      mouseX >=1020 &&
+      mouseX <=1060 &&
+      mouseY >=20 &&
+      mouseY <=60 ||
+      key==="r"){
+    // window.location.reload();
+    background(255);
+  }
+  if(mouseIsPressed &&
+      mouseX >=1020 &&
+      mouseX <=1060 &&
+      mouseY >=70 &&
+      mouseY <=110 ||
+      key==="t"){
+    changeSize=10;
   }
 }
