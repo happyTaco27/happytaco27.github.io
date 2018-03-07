@@ -37,14 +37,17 @@ function draw(){
   rect(1020,20,40,40);
   //resetSize
   rect(1020,70,40,40);
-  // Square
+  //color Preview
+  fill(a,b,c);
+  rect(840,20,100,buttonHeight);
+  //words
   push();
+  textSize(45);
   fill(255);
-  rect(buttonWidth/2+10,buttonHeight/2,20,20);
-  // ellipse
-  ellipse(buttonWidth/2+240,buttonHeight/2+10,20,20);
-  // triangle
-  triangle(buttonWidth/2+430,buttonHeight/2+5,buttonWidth/2+440,buttonHeight-10,buttonWidth/2+450,buttonHeight/2+5);
+  text("Square",40,75);
+  text("Circle",buttonWidth+80,75);
+  text("Triangle",buttonWidth*2+75,75);
+  text("pen",1130,75);
   pop();
   // Red
   push();
@@ -64,9 +67,6 @@ function draw(){
   pop();
   Buttons();
   Tools();
-  resetSize();
-}
-function resetSize(){
 }
 function mouseWheel(event){
   changeSize -= event.delta/3;
@@ -74,9 +74,9 @@ function mouseWheel(event){
   return false;
 }
 function Tools(){
-  let a=slider1.value();
-  let b=slider2.value();
-  let c=slider3.value();
+  a=slider1.value();
+  b=slider2.value();
+  c=slider3.value();
   if(state===1){
     if(mouseY>120){
       if(mouseIsPressed){
@@ -168,6 +168,7 @@ function Buttons() {
     // window.location.reload();
     background(255);
   }
+  //reset size
   if(mouseIsPressed &&
       mouseX >=1020 &&
       mouseX <=1060 &&
@@ -176,4 +177,12 @@ function Buttons() {
       key==="t"){
     changeSize=10;
   }
+//   if(mouseIsPressed &&
+//       mouseX >=1020 &&
+//       mouseX <=1060 &&
+//       mouseY >=70 &&
+//       mouseY <=110 ||
+//       key==="s"){
+//     photo.save
+// }
 }
