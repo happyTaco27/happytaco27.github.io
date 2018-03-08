@@ -21,6 +21,9 @@ function setup(){
 function draw(){
   let buttonWidth=200;
   let buttonHeight=80;
+  a=slider1.value();
+  b=slider2.value();
+  c=slider3.value();
   noStroke();
   fill(180);
   rect(0,0,width,120);
@@ -74,15 +77,13 @@ function mouseWheel(event){
   return false;
 }
 function Tools(){
-  a=slider1.value();
-  b=slider2.value();
-  c=slider3.value();
+  let color=[[a,b,c]];
   if(state===1){
     if(mouseY>120){
       if(mouseIsPressed){
         push();
         rectMode(CENTER);
-        fill(a,b,c);
+        fill(color[0]);
         rect(mouseX,mouseY,changeSize,changeSize);
         pop();
       }
@@ -92,7 +93,7 @@ function Tools(){
     if(mouseY>120){
       if(mouseIsPressed){
         push();
-        fill(a,b,c);
+        fill(color[0]);
         ellipseMode(CENTER);
         ellipse(mouseX,mouseY,changeSize,changeSize);
         pop();
@@ -103,7 +104,7 @@ function Tools(){
     if(mouseY>120){
       if(mouseIsPressed){
         push();
-        fill(a,b,c);
+        fill(color[0]);
         //fix triangle so it's not sideways :)
         triangle(mouseX+changeSize/2,mouseY-changeSize/2,mouseX-changeSize/2,mouseY,mouseX+changeSize/2,mouseY+changeSize/2);
         pop();
@@ -114,7 +115,7 @@ function Tools(){
     if(mouseY>120){
       if(mouseIsPressed){
         push();
-        stroke(a,b,c);
+        stroke(color[0]);
         line(mouseX,mouseY,pmouseX,pmouseY);
         pop();
       }
@@ -177,12 +178,4 @@ function Buttons() {
       key==="t"){
     changeSize=10;
   }
-//   if(mouseIsPressed &&
-//       mouseX >=1020 &&
-//       mouseX <=1060 &&
-//       mouseY >=70 &&
-//       mouseY <=110 ||
-//       key==="s"){
-//     photo.save
-// }
 }
