@@ -1,5 +1,4 @@
-let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3,refresh,pageStart;
-pageStart=0;
+let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3,refresh;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(255);
@@ -179,13 +178,4 @@ function Buttons() {
       key==="t"){
     changeSize=10;
   }
-}
-function checkPageState(){
-  if(pageStart===0){
-    HomeScreen();
-  }
-}
-function HomeScreen(){
-  background(0);
-
 }
