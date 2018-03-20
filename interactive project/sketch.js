@@ -1,5 +1,5 @@
-let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3,refresh,pageStart;
-pageStart=0;
+let state,buttonWidth,buttonHeight,changeSize,a,b,c,slider1,slider2,slider3,refresh,pageState;
+pageState=1;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   background(255);
@@ -17,7 +17,6 @@ function setup(){
   slider3=createSlider(0,255,0,1);
   slider3.position(678, 67);
   slider3.style(10, 100);
-
 }
 function draw(){
   let buttonWidth=200;
@@ -71,6 +70,10 @@ function draw(){
   pop();
   Buttons();
   Tools();
+  drawBoxes();
+}
+function drawBoxes(){
+
 }
 function mouseWheel(event){
   changeSize -= event.delta/3;
@@ -180,12 +183,13 @@ function Buttons() {
     changeSize=10;
   }
 }
-function checkPageState(){
-  if(pageStart===0){
-    HomeScreen();
-  }
-}
-function HomeScreen(){
-  background(0);
-
-}
+// function()
+// function checkPageState(){
+//   if(pageStart===0){
+//     HomeScreen();
+//   }
+// }
+// function HomeScreen(){
+//   background(0);
+//
+// }
