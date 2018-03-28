@@ -2,8 +2,8 @@
 // Dan Schellenberg
 // Mar 26, 2018
 
-let rows = 30;
-let cols = 30;
+let rows = 120;
+let cols = 120;
 let grid;
 let cellSize;
 let autoPlay;
