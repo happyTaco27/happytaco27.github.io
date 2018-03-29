@@ -73,7 +73,6 @@ function draw(){
   drawBoxes();
 }
 function drawBoxes(){
-
 }
 function mouseWheel(event){
   changeSize -= event.delta/3;
