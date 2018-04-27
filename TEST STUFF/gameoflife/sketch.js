@@ -3,7 +3,8 @@ let rows = 6;
 let cols = 6;
 let grid;
 let cellSize;
-let tileCheck;
+let xcoord=[];
+let ycoord=[];
 function setup() {
   createCanvas(windowWidth,windowHeight);
   cellSize = height / cols;
@@ -50,7 +51,6 @@ function displayGrid() {
       if (grid[x][y] === 0) {
         fill(255);
       }
-
       else if(grid[x][y] ===1) {
         fill(175);
       }
@@ -64,6 +64,7 @@ function displayGrid() {
         fill(255);
       }
       else if (grid[x][y]===5){
+
         fill(0,255,0);
       }
       else {
@@ -76,26 +77,49 @@ function displayGrid() {
 
 function mousePressed() {
 //testing position
-  let xcoord = floor(mouseX / cellSize);
-  let ycoord = floor(mouseY / cellSize);
+  xcoord = floor(mouseX / cellSize);
+  ycoord = floor(mouseY / cellSize);
   let currentPos=[];
   let priorPos=[];
   if (mouseIsPressed){
-    print("x:",xcoord," y:",ycoord);
-    currentPos=grid[xcoord][ycoord];
-    grid[xcoord][ycoord]=currentPos;
-    //checking if neighbour tiles are a player
-    for(let i=0;i<2;i++){
-      for(let j=0;j<2;j++){
-        if(grid[i][j]!==grid[xcoord][ycoord]&&grid[i][j]===5){
-          priorPos=grid[i][j];
-          grid[i][j]=1;
+    // if(grid[xcoord][ycoord]===){
+    //
+    // }
+    print("x:",xcoord," y:",ycoord," and state: ",grid[xcoord][ycoord]);
+
+    // }
+    //checking if neighbour tiles are a player, doesnt work yet(WIP)
+    // for(let i=0;i<2;i++){
+    //   for(let j=0;j<2;j++){
+    //     if(grid[i][j]!==grid[xcoord][ycoord]&&grid[i][j]===5){
+    //       priorPos=grid[i][j];
+    //       grid[i][j]=1;
+    // }
+    // }
+    // }
+  }
+}
+class PlayerCheck {
+  constructor() {
+    this.playPos;
+    this.currentpos=[];
+    this.priorPos;
+    this.xcoord=xcoord;
+    this.ycoord=ycoord;
+  }
+  checkIfPlayerIsOnMap()  {
+    for(let i=0;i<cols;i++){
+      for(let j=0;j<rows;j++){
+        if(grid[i][j]===5){
+          this.currentPos=grid[i][j];
         }
       }
     }
   }
+  move(){
+    if(this.currentPos!==grid[this.xcoord][this.ycoord]){
+      this.currentPos=this.priorPos;
 
-  // else {
-  //   grid[xcoord][ycoord] = 1;
-  // }
+    }
+  }
 }
