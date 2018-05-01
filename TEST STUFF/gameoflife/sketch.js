@@ -6,53 +6,31 @@ let cellSize;
 let xcoord=[];
 let ycoord=[];
 let player;
-function setup() {
+let gridState;
+let startPoint;
+let startfloor;
+function preload(){
+  startPoint="Assets/floor_1.txt";
+  startfloor= loadStrings(startPoint);
+}
+function setup(){
   createCanvas(windowWidth,windowHeight);
   cellSize = height / cols;
+  gridState=1;
   //map is inverted
   grid=[
-    [1],
-    [1],
-    [1],
-    [1],
-    [1],
-    [1]
-    // [0,0,0,0,0,0],
-    // [0,1,1,1,1,0],
-    // [0,1,5,1,1,0],
-    // [2,3,1,1,1,0],
-    // [4,2,3,1,1,0],
-    // [4,4,2,0,0,0],
+    [0,0,0,0,0,0],
+    [0,1,1,1,1,0],
+    [0,1,5,1,1,0],
+    [0,1,1,1,1,0],
+    [0,1,1,1,1,0],
+    [0,0,0,0,0,0],
   ];
 }
 function draw() {
   background(255);
   displayGrid();
-
 }
-//Leave this, it's isnt working
-// class Map {
-//   constructor() {
-//     this.rows=6;
-//     this.cols=6;
-//     this.grid;
-//     this.cellSize;
-//     this.playSize=width-500;
-//   }
-//   displayGrid(){
-//     for (let x=0; x<cols; x++) {
-//       for (let y=0; y<rows; y++) {
-//         if (grid[x][y] === 0) {
-//           fill(255);
-//         }
-//         else {
-//           fill(0);
-//         }
-//         rect(x*cellSize, y*cellSize, cellSize, cellSize);
-//       }
-//     }
-//   }
-// }
 function displayGrid() {
   for (let x=0; x<cols; x++) {
     for (let y=0; y<rows; y++) {
@@ -89,48 +67,25 @@ function mousePressed() {
   ycoord = floor(mouseY / cellSize);
   let currentPos=[];
   let priorPos=[];
-  if (mouseIsPressed&&grid[xcoord][ycoord]===1&&grid[xcoord][ycoord]!==5){
-    print("x:",xcoord," y:",ycoord," and state: ",grid[xcoord][ycoord]);
-    grid[xcoord][ycoord]=5;
+  if(grid[xcoord][ycoord]===0){
+    grid[xcoord][ycoord];
+  }
+  else{
     //Prior player pos removal from grid
-    for(let i=0;i<2;i++){
-      for(let j=0;j<2;j++){
-        if(grid[xcoord-1][ycoord-1]===5||
-          grid[xcoord][ycoord-1]===5||
-          grid[xcoord+1][ycoord-1]===5||
-          grid[xcoord-1][ycoord]===5||
-          grid[xcoord+1][ycoord]===5||
-          grid[xcoord-1][ycoord+1]===5||
-          grid[xcoord][ycoord+1]===5||
-          grid[xcoord+1][ycoord+1]===5){
-            
+    for(let i=0;i<rows;i++){
+      for(let j=0;j<cols;j++){
+        if(grid[i][j]===0||grid[i][j]===2||grid[i][j]===3||grid[i][j]===4){
+          grid[i][j];
+        }
+        else if(grid[i][j]===5){
           grid[i][j]=1;
+        }
+        //changing players pos
+        else if(mouseIsPressed&&grid[xcoord][ycoord]===1){
+          print("x:",xcoord+1," y:",ycoord+1," and state: ",grid[xcoord][ycoord]);
+          grid[xcoord][ycoord]=5;
         }
       }
     }
   }
 }
-// class PlayerCheck {
-//   constructor() {
-//     this.playPos;
-//     this.currentpos=[];
-//     this.priorPos;
-//     this.xcoord=xcoord;
-//     this.ycoord=ycoord;
-//   }
-//   checkIfPlayerIsOnMap()  {
-//     for(let i=0;i<cols;i++){
-//       for(let j=0;j<rows;j++){
-//         if(grid[i][j]===5){
-//           this.currentPos=grid[i][j];
-//         }
-//       }
-//     }
-//   }
-//   move(){
-//     if(this.currentPos!==grid[this.xcoord][this.ycoord]){
-//       this.currentPos=this.priorPos;
-//
-//     }
-//   }
-// }
