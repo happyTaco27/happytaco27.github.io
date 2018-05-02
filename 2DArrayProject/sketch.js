@@ -1,17 +1,18 @@
-// 2D array assignment(ultimate Tic-Tac-Toe0)
+// 2D array assignment(ultimate Tic-Tac-Toe)
 // Donovan
 // March 29,2018 -
 
 // global variables
-let posX,posY,aiX,aiY,cols,rows,grid,size;
+let posX,posY,aiX,aiY,cols,rows,grid,size,stateOfTile;
+grid=[[]];
 rows=9;
 cols=9;
 size=50;
-posX=mouseX;
-posY=mouseY;
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  posX=mouseX;
+  posY=mouseY;
 }
 
 function draw() {
@@ -35,9 +36,7 @@ function emptyGrid(cols,rows){
 function theBoard(){
   for (let x=0; x<cols; x++) {
     for (let y=0; y<rows; y++) {
-      // if (grid[x][y] === 0) {
       rect(x*size, y*size, size, size);
-      // }
     }
   }
 }
@@ -54,6 +53,6 @@ function mousePressed(){
   let xcoord = floor(posX / size);
   let ycoord = floor(posY / size);
   if (grid[xcoord][ycoord] === 0) {
-    grid[xcoord][ycoord]===1;
+    grid[xcoord][ycoord]=1;
   }
 }
