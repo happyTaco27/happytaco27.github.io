@@ -9,12 +9,10 @@ let player;
 let gridState;
 let startPoint;
 let startfloor;
-
 function preload(){
   startPoint="Assets/floor_1.txt";
   startfloor= loadStrings(startPoint);
 }
-
 function setup(){
   createCanvas(windowWidth,windowHeight);
   cellSize = height / cols;
@@ -29,36 +27,28 @@ function setup(){
     [0,0,0,0,0,0],
   ];
 }
-
 function draw() {
   background(255);
   displayGrid();
 }
-
 function displayGrid() {
   for (let x=0; x<cols; x++) {
     for (let y=0; y<rows; y++) {
-      //wall
       if (grid[x][y] === 0) {
         fill(255);
       }
-      //floor
       else if(grid[x][y] ===1) {
         fill(175);
       }
-      //wall
       else if (grid[x][y] === 2) {
         fill(255);
       }
-      //wall
       else if (grid[x][y] === 3) {
         fill(255);
       }
-      //wall
       else if (grid[x][y] === 4) {
         fill(255);
       }
-      //player
       else if (grid[x][y]===5){
         player=true;
         fill(0,255,0);
@@ -84,11 +74,9 @@ function mousePressed() {
     //Prior player pos removal from grid
     for(let i=0;i<rows;i++){
       for(let j=0;j<cols;j++){
-        //checking if neighbour tiles are walls (leaving it as the same)
         if(grid[i][j]===0||grid[i][j]===2||grid[i][j]===3||grid[i][j]===4){
           grid[i][j];
         }
-        //checking if a neighbour tile is a player (changing it to a floor/empty tile)
         else if(grid[i][j]===5){
           grid[i][j]=1;
         }
