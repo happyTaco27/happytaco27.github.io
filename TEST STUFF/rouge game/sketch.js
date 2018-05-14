@@ -13,17 +13,17 @@ function setup(){
   createCanvas(windowWidth,windowHeight);
   cellSize = height / cols;
   //inverts map and Flips the map 90* to the right
-  grid=createEmpty2dArray(rows,cols);
-//   grid=[
-//     [0,0,0,0,0,0,0],
-//     [0,1,1,1,1,1,0],
-//     [0,1,5,1,1,1,0],
-//     [0,1,1,1,1,1,0],
-//     [0,1,1,1,1,1,0],
-//     [0,0,0,0,0,1,0],
-//     [0,1,1,1,1,1,0],
-//     [0,0,0,0,0,0,0]
-//   ];
+  // grid=createEmpty2dArray(rows,cols);
+  grid=[
+    [0,0,0,0,0,0,0],
+    [0,1,1,1,1,1,0],
+    [0,1,5,1,1,1,0],
+    [0,1,1,1,1,1,0],
+    [0,1,1,1,1,1,0],
+    [0,0,0,0,0,1,0],
+    [0,1,1,1,1,1,0],
+    [0,0,0,0,0,0,0]
+  ];
 }
 function draw() {
   background(255);
