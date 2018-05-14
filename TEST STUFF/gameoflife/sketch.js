@@ -5,6 +5,7 @@ let grid;
 let cellSize;
 let xcoord=[];
 let ycoord=[];
+<<<<<<< HEAD
 let player;
 let gridState;
 let startPoint;
@@ -14,6 +15,9 @@ function preload(){
   startfloor= loadStrings(startPoint);
 }
 function setup(){
+=======
+function setup() {
+>>>>>>> parent of 1e2bdae... player pos is almost done
   createCanvas(windowWidth,windowHeight);
   cellSize = height / cols;
   gridState=1;
@@ -22,9 +26,15 @@ function setup(){
     [0,0,0,0,0,0],
     [0,1,1,1,1,0],
     [0,1,5,1,1,0],
+<<<<<<< HEAD
     [0,1,1,1,1,0],
     [0,1,1,1,1,0],
     [0,0,0,0,0,0],
+=======
+    [2,3,1,1,1,0],
+    [4,2,3,1,1,0],
+    [4,4,2,0,0,0],
+>>>>>>> parent of 1e2bdae... player pos is almost done
   ];
 }
 function draw() {
@@ -50,11 +60,11 @@ function displayGrid() {
         fill(255);
       }
       else if (grid[x][y]===5){
-        player=true;
+
         fill(0,255,0);
       }
       else {
-        fill(255);
+        fill(0);
       }
       rect(x*cellSize, y*cellSize, cellSize, cellSize);
     }
@@ -67,6 +77,7 @@ function mousePressed() {
   ycoord = floor(mouseY / cellSize);
   let currentPos=[];
   let priorPos=[];
+<<<<<<< HEAD
   if(grid[xcoord][ycoord]===0){
     grid[xcoord][ycoord];
   }
@@ -79,6 +90,39 @@ function mousePressed() {
         }
         else if(grid[i][j]===5){
           grid[i][j]=1;
+=======
+  if (mouseIsPressed){
+    // if(grid[xcoord][ycoord]===){
+    //
+    // }
+    print("x:",xcoord," y:",ycoord," and state: ",grid[xcoord][ycoord]);
+
+    // }
+    //checking if neighbour tiles are a player, doesnt work yet(WIP)
+    // for(let i=0;i<2;i++){
+    //   for(let j=0;j<2;j++){
+    //     if(grid[i][j]!==grid[xcoord][ycoord]&&grid[i][j]===5){
+    //       priorPos=grid[i][j];
+    //       grid[i][j]=1;
+    // }
+    // }
+    // }
+  }
+}
+class PlayerCheck {
+  constructor() {
+    this.playPos;
+    this.currentpos=[];
+    this.priorPos;
+    this.xcoord=xcoord;
+    this.ycoord=ycoord;
+  }
+  checkIfPlayerIsOnMap()  {
+    for(let i=0;i<cols;i++){
+      for(let j=0;j<rows;j++){
+        if(grid[i][j]===5){
+          this.currentPos=grid[i][j];
+>>>>>>> parent of 1e2bdae... player pos is almost done
         }
         //changing players pos
         else if(mouseIsPressed&&grid[xcoord][ycoord]===1){
@@ -86,6 +130,12 @@ function mousePressed() {
           grid[xcoord][ycoord]=5;
         }
       }
+    }
+  }
+  move(){
+    if(this.currentPos!==grid[this.xcoord][this.ycoord]){
+      this.currentPos=this.priorPos;
+
     }
   }
 }
